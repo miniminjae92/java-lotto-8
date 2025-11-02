@@ -10,8 +10,8 @@ public class WinningLotto {
     private final Lotto mainNumbers;
     private final int bonusNumber;
 
-    public WinningLotto(List<Integer> mainNumbers, int bonusNumber) {
-        this.mainNumbers = new Lotto(mainNumbers);
+    public WinningLotto(Lotto mainNumbers, int bonusNumber) {
+        this.mainNumbers = mainNumbers;
         validateNumberRange(bonusNumber);
         validateBonusNotInMain(bonusNumber);
         this.bonusNumber = bonusNumber;
