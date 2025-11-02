@@ -18,7 +18,7 @@ class LottosTest {
 
     @BeforeEach
     void setup() {
-        this.wl = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        this.wl = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
     }
 
     @DisplayName("로또 목록을 정답과 비교하여 정확한 통계를 반환한다.")

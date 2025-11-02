@@ -24,7 +24,7 @@ class WinningLottoTest {
         @DisplayName("유효한 당첨번호 6개와 보너스번호 1개로 생성이 성공한다.")
         @Test
         void createTest() {
-            List<Integer> mainNumbers = List.of(1, 2, 3, 4, 5, 6);
+            Lotto mainNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 7;
 
             assertThatCode(() -> new WinningLotto(mainNumbers, bonusNumber)).doesNotThrowAnyException();
@@ -33,7 +33,7 @@ class WinningLottoTest {
         @DisplayName("당첨번호와 보너스번호가 중복될 경우 예외를 생성한다.")
         @Test
         void duplicateTest() {
-            List<Integer> mainNumbers = List.of(1, 2, 3, 4, 5, 6);
+            Lotto mainNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 6;
 
             assertThatThrownBy(() -> new WinningLotto(mainNumbers, bonusNumber))
@@ -44,7 +44,7 @@ class WinningLottoTest {
         @DisplayName("보너스 번호는 1~45 범위를 벗어나면 예외를 반환한다.")
         @Test
         void rangeTest() {
-            List<Integer> mainNumbers = List.of(1, 2, 3, 4, 5, 6);
+            Lotto mainNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 46;
 
             assertThatThrownBy(() -> new WinningLotto(mainNumbers, bonusNumber))
@@ -61,7 +61,7 @@ class WinningLottoTest {
 
         @BeforeEach
         void setup() {
-            this.winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+            this.winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
         }
 
         @DisplayName("유저 로또와 비교해서 등수를 반환한다.")
