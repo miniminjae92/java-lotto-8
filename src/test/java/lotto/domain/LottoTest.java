@@ -61,4 +61,14 @@ class LottoTest {
         assertThat(user.contains(1)).isTrue();
         assertThat(user.contains(45)).isFalse();
     }
+
+    @DisplayName("오름차순 정렬된 순서를 가진다.")
+    @Test
+    void sortedTest() {
+        Lotto user = new Lotto(List.of(6, 5, 2, 3, 1, 4));
+
+        List<Integer> userNumbers = user.getNumbers();
+
+        assertThat(userNumbers).containsExactlyElementsOf(List.of(1, 2, 3, 4, 5, 6));
+    }
 }
