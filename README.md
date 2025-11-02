@@ -26,9 +26,9 @@
   - [x] issue(count) 메서드를 통해 Lottos 객체를 생성하여 반환한다.
 
 - Lottos (구매한 로또 묶음 / 일급 컬렉션)
-  - [ ] List<Lotto>를 감싼 일급 컬렉션이며, "로또 관리" 책임을 진다.
+  - [x] List<Lotto>를 감싼 일급 컬렉션이며, "로또 관리" 책임을 진다.
   - [x] LottoIssuer로부터 이미 완성된 List<Lotto>를 주입받는다.
-  - [ ] WinningLotto를 받아, 통계 결과를 스스로 계산하여 반환한다. (calculateStatistics)
+  - [x] WinningLotto를 받아, 통계 결과를 스스로 계산하여 반환한다. (calculateStatistics)
 
 **🏛️ 주요 클래스 및 역할**
 
