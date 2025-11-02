@@ -20,9 +20,15 @@
   - [x] 생성 시점에 당첨 번호와 보너스 번호가 겹치지 않는지 스스로 검증한다.
   - [x] userLotto 1장을 받아, Rank가 무엇인지 스스로 판별(calculateRank)한다.
      
-- LottoTickets (구매한 로또 묶음)
-  - [ ] List<Lotto>를 감싼 일급 컬렉션. 
-  - [ ] WinningLotto를 받아, 통계 결과를 스스로 계산하여 반환한다. 
+- LottoIssuer (로또 발행기 / Factory)
+  - [x] "로또 생성" 책임을 진다.
+  - [x] Supplier<List<Integer>>(번호 생성 전략)에 의존하며, 외부로부터 **의존성 주입(DI)**을 받는다.
+  - [x] issue(count) 메서드를 통해 Lottos 객체를 생성하여 반환한다.
+
+- Lottos (구매한 로또 묶음 / 일급 컬렉션)
+  - [ ] List<Lotto>를 감싼 일급 컬렉션이며, "로또 관리" 책임을 진다.
+  - [x] LottoIssuer로부터 이미 완성된 List<Lotto>를 주입받는다.
+  - [ ] WinningLotto를 받아, 통계 결과를 스스로 계산하여 반환한다. (calculateStatistics)
 
 **🏛️ 주요 클래스 및 역할**
 
