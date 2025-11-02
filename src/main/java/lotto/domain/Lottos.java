@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import lotto.domain.dto.LottoDto;
 
 public class Lottos {
 
@@ -23,6 +24,12 @@ public class Lottos {
             statistics.put(rank, statistics.get(rank) + 1);
         }
         return statistics;
+    }
+
+    public List<LottoDto> toDtoList() {
+        return tickets.stream()
+                .map(e -> new LottoDto(e.getNumbers()))
+                .toList();
     }
 
     public int getSize() {
