@@ -28,12 +28,6 @@ public class InputView {
         return parseInt(input);
     }
 
-    private static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_COUNT.getMessage());
-        }
-    }
-
     private static void validateNotBlank(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT_MESSAGE.getMessage());
