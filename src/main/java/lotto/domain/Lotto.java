@@ -1,12 +1,10 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import lotto.constants.ErrorMessage;
 
-//- Lotto (로또 1장)
-//  - [ ] 6개의 번호를 가진다.
-//  - [ ] 생성 시점에 스스로 유효성 검사(중복, 범위) 및 정렬을 수행한다.
-//        - [ ] 다른 로또와 몇 개가 겹치는지(countMatch), 특정 번호를 포함하는지(contains) 계산할 수 있다.
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -16,10 +14,40 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateRange(numbers);
+        validateDuplication(numbers);
+    }
+
+    public int countMatch(Lotto other) {
+        return (int) other.numbers.stream()
+                .filter(this.numbers::contains)
+                .count();
+    }
+
+    public boolean contains(int number) {
+        return this.numbers.contains(number);
+    }
+
+    private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_COUNT.getMessage());
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateRange(List<Integer> numbers) {
+        for (int i : numbers) {
+            if (i < 1 || i > 45) {
+                throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.getMessage());
+            }
+        }
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_LOTTO_NUMBER.getMessage());
+        }
+    }
+
 }
