@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.constants.ErrorMessage;
+import lotto.common.ErrorMessage;
+
+import static lotto.common.LottoConstants.*;
 
 public class WinningLotto {
 
@@ -22,7 +24,7 @@ public class WinningLotto {
     }
 
     private static void validateNumberRange(int numbers) {
-        if (numbers < 1 || numbers > 45) {
+        if (numbers < LOTTO_NUMBER_MIN || numbers > LOTTO_NUMBER_MAX) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.getMessage());
         }
     }

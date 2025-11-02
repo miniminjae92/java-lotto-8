@@ -1,10 +1,12 @@
 package lotto.view;
 
+import static lotto.common.LottoConstants.LOTTO_NUMBER_COUNT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.constants.ErrorMessage;
+import lotto.common.ErrorMessage;
 
 public class InputView {
 
@@ -24,6 +26,12 @@ public class InputView {
         String input = Console.readLine();
         validateNotBlank(input);
         return parseInt(input);
+    }
+
+    private static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_COUNT.getMessage());
+        }
     }
 
     private static void validateNotBlank(String input) {

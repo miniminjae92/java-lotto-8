@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.common;
 
 public enum ErrorMessage {
     INVALID_NUMBER_COUNT("로또 번호는 6개여야 합니다."),

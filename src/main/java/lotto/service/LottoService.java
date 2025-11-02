@@ -5,17 +5,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
-import lotto.constants.ErrorMessage;
+import lotto.common.ErrorMessage;
 import lotto.domain.LottoIssuer;
 import lotto.domain.Lottos;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
 
+import static lotto.common.LottoConstants.*;
+
 public class LottoService {
 
     public Lottos purchaseTickets(int amount) {
         int quantity = validateAmount(amount);
-        Supplier<List<Integer>> randomNumbers = () -> Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Supplier<List<Integer>> randomNumbers = () -> Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_NUMBER_COUNT);
         LottoIssuer issuer = new LottoIssuer(randomNumbers);
         return issuer.issue(quantity);
     }
@@ -25,23 +27,23 @@ public class LottoService {
     }
 
     public double getProfitRate(Map<Rank, Integer> statistics, int issuedCount) {
-        double totalPurchaseAmount = issuedCount * 1000;
+        double totalPurchaseAmount = issuedCount * LOTTO_PRICE;
         double totalPrize = 0;
         for (Entry<Rank, Integer> entry : statistics.entrySet()) {
             if (entry.getValue() != 0) {
                 totalPrize += entry.getKey().getPrize() * entry.getValue();
             }
         }
-        return totalPrize / totalPurchaseAmount * 100;
+        return totalPrize / totalPurchaseAmount * PERCENT;
     }
 
     private int validateAmount(int amount) {
-        if (amount < 1000) {
+        if (amount < LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE_MESSAGE.getMessage());
         }
-        if (amount % 1000 != 0) {
+        if (amount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT_MESSAGE.getMessage());
         }
-        return amount / 1000;
+        return amount / LOTTO_PRICE;
     }
 }

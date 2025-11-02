@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lotto.constants.ErrorMessage;
+import lotto.common.ErrorMessage;
+import static lotto.common.LottoConstants.*;
 
 public class Lotto {
 
@@ -36,14 +36,14 @@ public class Lotto {
     }
 
     private static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_COUNT.getMessage());
         }
     }
 
     private static void validateRange(List<Integer> numbers) {
         for (int i : numbers) {
-            if (i < 1 || i > 45) {
+            if (i < LOTTO_NUMBER_MIN || i > LOTTO_NUMBER_MAX) {
                 throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.getMessage());
             }
         }

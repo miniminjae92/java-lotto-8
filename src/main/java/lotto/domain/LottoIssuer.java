@@ -13,7 +13,7 @@ public class LottoIssuer {
     }
 
     public Lottos issue(int count) {
-        List<Lotto> generatedLottos = IntStream.range(0, count).mapToObj(i -> new Lotto(randomNumbers.get())).toList();
-        return new Lottos(generatedLottos);
+        List<Lotto> tickets = IntStream.range(0, count).mapToObj(i -> new Lotto(randomNumbers.get())).toList();
+        return new Lottos(tickets);
     }
 }

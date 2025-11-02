@@ -28,10 +28,8 @@ public class LottoController {
     public void run() {
         // 1. 로또 구매 (예외 처리 루프 포함)
         Lottos lottos = purchaseLottos();
-
         // 2. 당첨 번호 입력 (예외 처리 루프 포함)
         WinningLotto winningLotto = askWinningLotto();
-
         // 3. 결과 출력 (DTO 변환 포함)
         showResults(lottos, winningLotto);
     }
