@@ -1,5 +1,11 @@
 package lotto.service;
 
+import static lotto.common.LottoConstants.LOTTO_NUMBER_COUNT;
+import static lotto.common.LottoConstants.LOTTO_NUMBER_MAX;
+import static lotto.common.LottoConstants.LOTTO_NUMBER_MIN;
+import static lotto.common.LottoConstants.LOTTO_PRICE;
+import static lotto.common.LottoConstants.PERCENT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +16,6 @@ import lotto.domain.LottoIssuer;
 import lotto.domain.Lottos;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
-
-import static lotto.common.LottoConstants.*;
 
 public class LottoService {
 
@@ -39,10 +43,10 @@ public class LottoService {
 
     private int validateAmount(int amount) {
         if (amount < LOTTO_PRICE) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE.getMessage());
         }
         if (amount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT.getMessage());
         }
         return amount / LOTTO_PRICE;
     }

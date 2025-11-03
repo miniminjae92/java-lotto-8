@@ -36,8 +36,8 @@ class WinningLottoTest {
             Lotto mainNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 6;
 
-            assertThatThrownBy(() -> new WinningLotto(mainNumbers, bonusNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> new WinningLotto(mainNumbers, bonusNumber)).isInstanceOf(
+                            IllegalArgumentException.class)
                     .hasMessageContaining(ErrorMessage.DUPLICATE_BONUS_NUMBER.getMessage());
         }
 
@@ -47,9 +47,8 @@ class WinningLottoTest {
             Lotto mainNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 46;
 
-            assertThatThrownBy(() -> new WinningLotto(mainNumbers, bonusNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ErrorMessage.NUMBER_OUT_OF_RANGE.getMessage());
+            assertThatThrownBy(() -> new WinningLotto(mainNumbers, bonusNumber)).isInstanceOf(
+                    IllegalArgumentException.class).hasMessageContaining(ErrorMessage.NUMBER_OUT_OF_RANGE.getMessage());
         }
     }
 
@@ -74,19 +73,14 @@ class WinningLottoTest {
         }
 
         private static Stream<Arguments> provideLottoAndRank() {
-            return Stream.of(
-                    Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), Rank.FIRST),
+            return Stream.of(Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), Rank.FIRST),
                     Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 7)), Rank.SECOND),
                     Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 8)), Rank.THIRD),
                     Arguments.of(new Lotto(List.of(1, 2, 3, 4, 8, 9)), Rank.FOURTH),
                     Arguments.of(new Lotto(List.of(1, 2, 3, 8, 9, 10)), Rank.FIFTH),
                     Arguments.of(new Lotto(List.of(1, 2, 8, 9, 10, 11)), Rank.MISS),
                     Arguments.of(new Lotto(List.of(1, 12, 8, 9, 10, 11)), Rank.MISS),
-                    Arguments.of(new Lotto(List.of(13, 12, 8, 9, 10, 11)), Rank.MISS)
-            );
+                    Arguments.of(new Lotto(List.of(13, 12, 8, 9, 10, 11)), Rank.MISS));
         }
-
     }
-
-
 }

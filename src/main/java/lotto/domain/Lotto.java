@@ -1,10 +1,13 @@
 package lotto.domain;
 
+import static lotto.common.LottoConstants.LOTTO_NUMBER_COUNT;
+import static lotto.common.LottoConstants.LOTTO_NUMBER_MAX;
+import static lotto.common.LottoConstants.LOTTO_NUMBER_MIN;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lotto.common.ErrorMessage;
-import static lotto.common.LottoConstants.*;
 
 public class Lotto {
 

@@ -45,7 +45,7 @@ class RankTest {
                 Arguments.of(Rank.FIFTH, 5_000),
                 Arguments.of(Rank.FOURTH, 50_000),
                 Arguments.of(Rank.THIRD, 1_500_000),
-                Arguments.of( Rank.SECOND, 30_000_000),
+                Arguments.of(Rank.SECOND, 30_000_000),
                 Arguments.of(Rank.FIRST, 2_000_000_000),
                 Arguments.of(Rank.MISS, 0)
         );
@@ -63,10 +63,9 @@ class RankTest {
                 Arguments.of(Rank.FIFTH, "3개 일치 (5,000원)"),
                 Arguments.of(Rank.FOURTH, "4개 일치 (50,000원)"),
                 Arguments.of(Rank.THIRD, "5개 일치 (1,500,000원)"),
-                Arguments.of( Rank.SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
+                Arguments.of(Rank.SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
                 Arguments.of(Rank.FIRST, "6개 일치 (2,000,000,000원)"),
                 Arguments.of(Rank.MISS, "꽝 (0원)")
         );
     }
-
 }

@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import java.util.List;
-import lotto.common.ErrorMessage;
+import static lotto.common.LottoConstants.LOTTO_NUMBER_MAX;
+import static lotto.common.LottoConstants.LOTTO_NUMBER_MIN;
 
-import static lotto.common.LottoConstants.*;
+import lotto.common.ErrorMessage;
 
 public class WinningLotto {
 

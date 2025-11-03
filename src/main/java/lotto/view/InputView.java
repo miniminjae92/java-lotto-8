@@ -1,7 +1,5 @@
 package lotto.view;
 
-import static lotto.common.LottoConstants.LOTTO_NUMBER_COUNT;
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +28,7 @@ public class InputView {
 
     private static void validateNotBlank(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT.getMessage());
         }
     }
 
@@ -44,7 +42,7 @@ public class InputView {
         try {
             return Integer.parseInt(input.strip());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_A_NUMBER.getMessage());
         }
     }
 }
